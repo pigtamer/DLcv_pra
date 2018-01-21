@@ -23,3 +23,9 @@ class kNNClassfier:
             Ypred = self.ytrain[minidx]
         return Ypred
 
+file_path = "../dataset/cifar10/data_batch_"
+file_idx = 1
+
+FILE_NAME = file_path + str(file_idx)
+
+images, labels = load_cifar.extractImagesAndLabels(FILE_NAME)

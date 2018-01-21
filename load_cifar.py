@@ -18,12 +18,16 @@ import numpy as np
 import cv2 as cv
 import _pickle as pickle # on py3.x cPickle is changed to _pickle.
 
-class load_cifar:
-    def __init__(self):
-        pass
+def unpickle(file):
+    with open(file, 'rb') as fo:
+        dict = pickle.load(fo, encoding='bytes')
+    return dict
 
-    def unpickle(self, file):
-        with open(file, 'rb') as fo:
-            dict = pickle.load(fo, encoding='bytes')
-        return dict
-
+def extractImagesAndLabels(path):
+    f = open(path, 'rb')
+    dict = pickle.load(f, encoding='bytes') # what the hell is this..
+    # print(dict.keys())
+    images = dict[b'data']
+    images = np.reshape(images, (10000, 3, 32, 32))
+    labels = dict[b'labels']
+    return images, labels
