@@ -1,5 +1,7 @@
 import numpy as np
 import cv2 as cv
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 # IMPORT LOWER LAYER
 import load_cifar
@@ -29,3 +31,10 @@ file_idx = 1
 FILE_NAME = file_path + str(file_idx)
 
 images, labels = load_cifar.extractImagesAndLabels(FILE_NAME)
+
+# im1 = np.array(images[0]);
+im1 = load_cifar.extractSingleImg(images, 100)
+print(im1.shape)
+
+plt.imshow(im1)
+plt.show()
