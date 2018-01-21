@@ -28,11 +28,7 @@ def extractImagesAndLabels(path):
     dict = pickle.load(f, encoding='bytes') # what the hell is this..
     print(dict.keys())
     images = dict[b'data']
-    images = np.reshape(images, (10000, 3, 32, 32))
+    # we need to transepose after load image from cifar framework.
+    images = np.transpose(np.reshape(images, (10000, 3, 32, 32)), (0, 2,3,1))
     labels = dict[b'labels']
     return images, labels
-
-def extractSingleImg(images, idx):
-    im = images[idx]
-    im = np.array(np.transpose(im, (1,2,0)))
-    return im
