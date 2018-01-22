@@ -32,7 +32,7 @@ FILE_NAME = file_path + str(file_idx)
 
 images, labels = load_cifar.extractImagesAndLabels(FILE_NAME)
 print(images.shape)
-im1 = np.array(images[0]);
+im1 = np.array(images[0])
 print(im1.shape)
 
 plt.imshow(im1)
